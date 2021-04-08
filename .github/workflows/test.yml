@@ -1,0 +1,20 @@
+name: Deploy Android release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'Upload to Google Play'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJson: ${{ secrets.ANDROID_GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: de.test.app
+          releaseFiles: ./apk/test.apk
+          track: beta

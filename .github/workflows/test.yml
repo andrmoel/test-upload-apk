@@ -1,8 +1,7 @@
 name: Deploy Android release
 
 on:
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -17,5 +16,5 @@ jobs:
         with:
           serviceAccountJson: ${{ secrets.ANDROID_GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: de.test.app
-          releaseFiles: apk/*.apk
+          releaseFiles: ./apk/test.apk
           track: beta
